@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="Kokos"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <div th:each="product : ${product}">
+        <form method="post">
+            <div class="mb-3">
+                <label for="title">Product Name</label>
+                <input th:value="${product.title}" type="text" class="form-control" name="title" id="title" required="">
+                <div class="invalid-feedback">
+                    Please enter product name.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cost">Cost</label>
+                <input th:value="${product.cost}" type="number" class="form-control" name="cost" id="cost" required="">
+                <div class="invalid-feedback">
+                    Please enter cost.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="location">Location</label>
+                <input th:value="${product.location}" type="text" class="form-control" name="location" id="location"  required="">
+                <div class="invalid-feedback">
+                    Please enter location.
+                </div>
+            </div>
+            <div class="mb-3">
+                <textarea name="description" id="description" class="form-control" th:text="${product.description}" />
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
